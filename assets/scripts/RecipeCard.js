@@ -4,11 +4,10 @@ class RecipeCard extends HTMLElement {
 
     // You'll want to attach the shadow DOM here
     super();
-    let shadow = this.attachShadow({model: 'open'});
+    this.attachShadow({model: 'open'});
   }
 
   set data(data) {
-    console.log(data);
     // This is the CSS that you'll use for your recipe cards
     const styleElem = document.createElement('style');
     const styles = `
@@ -104,29 +103,26 @@ class RecipeCard extends HTMLElement {
     // created in the constructor()
 
     // Part 1 Expose - TODO
-    console.log(data);
     const url = getUrl(data);
     const organization = getOrganization(data);
+
     const image = card.appendChild(document.createElement('img'));
-    
-    image.setAttribute('src', searchForKey(data, 'thumbnailUrl'));
-    image.setAttribute('alt', searchForKey(data, 'headline'));
-    if (searchForKey(data, 'thumbnailUrl') == undefined) {
-      image.setAttribute('src', searchForKey(data, 'image'));
-    }
+    image.src = searchForKey(data, 'thumbnailUrl');
+    image.alt = searchForKey(data, 'headline');
+
     const title = card.appendChild(document.createElement('p'));
-    title.setAttribute('className', 'title');
+    title.className = 'title';
+
     const element = title.appendChild(document.createElement('a'));
-    element.setAttribute('href', url);
-    element.setAttribute('textContent', searchForKey(data, 'headline'));
-    if (searchForKey(data, 'headline') == undefined) {
-      element.setAttribute('textContent', searchForKey(data, 'name'));
-    }
+    element.href = url;
+    element.textContent = searchForKey(data, 'headline');
+
     const organization = card.appendChild(document.createElement('p'));
-    organization.setAttribute('class', 'organization');
-    organization.setAttribute('textContent', organization);
+    organization.className = 'organization';
+    organization.innerHTML = organization;
+
     const rating = card.appendChild(document.createElement('div'));
-    rating.setAttribute('className', 'rating');
+    rating.className = 'rating';
     const time = card.appendChild(document.createElement('time'));
     time.setAttribute('textContent', convertTime(searchForKey(data, 'totalTime')));
     const ingredients = card.appendChild(document.createElement('p'));
