@@ -43,7 +43,7 @@ async function fetchRecipes() {
 
     // Part 1 Expose - TODO
     for (var i = 0; i < recipes.length; i++) {
-      fetch(recipe[i])
+      fetch(recipes[i])
         .then(response => response.json())
         .then(data => {
           recipeData[i] = data
