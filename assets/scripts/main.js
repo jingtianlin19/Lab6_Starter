@@ -102,6 +102,6 @@ function bindShowMore() {
         allRecipes[i].remove();
       }
     }
-    document.querySelector('button').innerHTML = 'Show less';;
+    document.querySelector('button').innerHTML = 'Show more';;
   })
 }
