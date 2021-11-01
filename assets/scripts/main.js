@@ -43,7 +43,7 @@ async function fetchRecipes() {
 
     // Part 1 Expose - TODO
     for (var i = 0; i < recipes.length; i++) {
-      fetch(reciple[i])
+      fetch(recipe[i])
         .then(response => response.json())
         .then(data => {
           recipeData[i] = data
@@ -68,8 +68,8 @@ function createRecipeCards() {
 
   // Part 1 Expose - TODO
   for (var i = 0; i < recipeData.length; i++) {
-    let recipleCard = document.querySelector('main').appendChild(document.createElement('recipeCard'));
-    recipleCard.data = recipeData[i];
+    let recipeCard = document.querySelector('main').appendChild(document.createElement('recipeCard'));
+    recipeCard.data = recipeData[i];
   }
 }
 
