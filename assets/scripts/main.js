@@ -89,7 +89,7 @@ function bindShowMore() {
         recipeData.data = recipeData[recipes[i]];
         document.querySelector('main').appendChild(recipeCard);
       }
-      showMore.innerText = 'show less';
+      showMore.innerText = 'Show less';
       expand = false
     }
     else {
@@ -98,7 +98,7 @@ function bindShowMore() {
         allRecipes[i].remove();
       }
     }
-    showMore.innerText = 'show more';
+    showMore.innerText = 'Show more';
     expand = true;
   })
 }
