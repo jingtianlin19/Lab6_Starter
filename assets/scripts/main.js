@@ -86,13 +86,12 @@ function bindShowMore() {
   const showMore = document.querySelector('button');
   var expand = true;
   showMore.addEventListener('click', function() {
-    if (expand === true) {
+    if (showMore.innerText === 'Show more') {
       for (let i = 3; i < 6; i++) {
         const recipeCard = document.querySelector('main').appendChild(document.createElement('recipe-card'));
         recipeCard.data = recipeData[recipes[i]];  
       }
       showMore.innerText = 'Show less';
-      expand = false
     }
     else {
       const allRecipes = document.querySelectorAll('recipe-card');
@@ -101,6 +100,5 @@ function bindShowMore() {
       }
     }
     showMore.innerText = 'Show more';
-    expand = true;
   })
 }
