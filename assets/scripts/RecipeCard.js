@@ -85,6 +85,7 @@ class RecipeCard extends HTMLElement {
         font-size: 12px;
       }
     `;
+
     styleElem.innerHTML = styles;
 
     // Here's the root element that you'll want to attach all of your other elements to
@@ -102,6 +103,16 @@ class RecipeCard extends HTMLElement {
     // created in the constructor()
 
     // Part 1 Expose - TODO
+    console.log(data);
+    const url = getUrl(data);
+    const organization = getOrganization(data);
+    const image = card.appendChild(document.createElement('image'));
+    
+    image.setAttribute('src', url);
+    image.setAttribute('alt', searchForKey(data, 'headline'));
+    if (url == NULL) {
+      image.setAttribute('src', searchForKey(data, 'iamge');)
+    }
   }
 }
 
