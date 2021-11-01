@@ -86,7 +86,7 @@ function bindShowMore() {
   const showMore = document.querySelector('button');
   var expand = true;
   showMore.addEventListener('click', function() {
-    if (expand) {
+    if (expand === true) {
       for (let i = 3; i < 6; i++) {
         const recipeCard = document.querySelector('main').appendChild(document.createElement('recipe-card'));
         recipeCard.data = recipeData[recipes[i]];  
