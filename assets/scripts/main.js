@@ -47,7 +47,7 @@ async function fetchRecipes() {
         .then(response => response.json())
         .then(data => {
           recipeData[i] = data;
-          if (recipes.length == recipeData.length) {
+          if (Object.keys(recipeData).length == recipeData.length) {
             console.log('success');
             resolve(true);
           }
