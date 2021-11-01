@@ -82,12 +82,11 @@ function bindShowMore() {
   // Part 2 Explore - TODO
   const showMore = document.querySelector('button');
   var expand = true;
-  showMore.addEventListener('click', (e) => {
+  showMore.addEventListener('click', function() {
     if (expand) {
       for (let i = 3; i < 6; i++) {
-        const recipeCard = document.createElement('recipe-card');
-        recipeData.data = recipeData[recipes[i]];
-        document.querySelector('main').appendChild(recipeCard);
+        const recipeCard = document.querySelector('main').appendChild(document.createElement('recipe-card'));
+        recipeCard.data = recipeData[recipes[i]];  
       }
       showMore.innerText = 'Show less';
       expand = false
