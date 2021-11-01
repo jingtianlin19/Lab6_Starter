@@ -111,7 +111,7 @@ class RecipeCard extends HTMLElement {
     image.setAttribute('src', url);
     image.setAttribute('alt', searchForKey(data, 'headline'));
     if (url == NULL) {
-      image.setAttribute('src', searchForKey(data, 'iamge');)
+      image.setAttribute('src', searchForKey(data, 'iamge'));
     }
   }
 }
