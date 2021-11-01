@@ -103,9 +103,7 @@ class RecipeCard extends HTMLElement {
     // created in the constructor()
 
     // Part 1 Expose - TODO
-    const url = getUrl(data);
-    const organization = getOrganization(data);
-
+   
     const image = card.appendChild(document.createElement('img'));
     image.src = searchForKey(data, 'thumbnailUrl');
     image.alt = searchForKey(data, 'headline');
@@ -119,17 +117,31 @@ class RecipeCard extends HTMLElement {
 
     const organization = card.appendChild(document.createElement('p'));
     organization.className = 'organization';
-    organization.innerHTML = organization;
+    organization.textContent = getOrganization(data);;
 
     const rating = card.appendChild(document.createElement('div'));
     rating.className = 'rating';
+    if (searchForKey(data, 'ratingValue') === undefined) {
+      const span = rating.appendChild(document.createElement('span'));
+      span.textContent = 'No Reviews'
+    } 
+    else {
+      const span = rating.appendChild(document.createElement('span'));
+      const ratingIcon = rating.appendChild(document.createElement('img'));
+      const totalReviews = rating.appendChild(document.createElement('span'));
+      span.textContent = searchForKey(data, 'ratingValue');
+      ratingIcon.src = 'assets/images/icons/' + Math.round(searchForKey(data, 'ratingValue')) + '-star.svg';
+      totalReviews.textContent = '(' + searchForKey(data, 'ratingCount') + ')';
+    }  
+
     const time = card.appendChild(document.createElement('time'));
-    time.setAttribute('textContent', convertTime(searchForKey(data, 'totalTime')));
+    time.textContent = convertTime(searchForKey(data, 'totalTime'));
     const ingredients = card.appendChild(document.createElement('p'));
-    ingredients.setAttribute('className', 'ingredients');
-    ingredients.setAttribute('textContent', createIngredientList(searchForKey(data, 'recipeIngredient')))
-    this.shadow.appendChild(card);
-    this.shadow.appendChild(styleElem);
+    ingredients.className = 'ingredients';
+    ingredients.textContent = createIngredientList(searchForKey(data, 'recipeIngredient'));
+    
+    this.shadowRoot.appendChild(card);
+    this.shadowRoot.appendChild(styleElem);
   }
 }
 
