@@ -106,13 +106,17 @@ class RecipeCard extends HTMLElement {
     console.log(data);
     const url = getUrl(data);
     const organization = getOrganization(data);
-    const image = card.appendChild(document.createElement('image'));
+    const image = card.appendChild(document.createElement('img'));
     
-    image.setAttribute('src', url);
+    image.setAttribute('src', searchForKey(data, 'thumbnailUrl'));
     image.setAttribute('alt', searchForKey(data, 'headline'));
-    if (url == NULL) {
-      image.setAttribute('src', searchForKey(data, 'iamge'));
+    if (searchForKey(data, 'thumbnailUrl') == undefined) {
+      image.setAttribute('src', searchForKey(data, 'image'));
     }
+    const title = card.appendChild(document.createElement('p'));
+    title.setAttribute('className', 'title');
+    const element = title.appendChild(document.createElement('a'));
+    element.setAttribute('href', url);
   }
 }
 
