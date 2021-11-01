@@ -117,6 +117,10 @@ class RecipeCard extends HTMLElement {
     title.setAttribute('className', 'title');
     const element = title.appendChild(document.createElement('a'));
     element.setAttribute('href', url);
+    element.setAttribute('textContent', searchForKey(data, 'headline'));
+    if (searchForKey(data, 'headline') == undefined) {
+      element.setAttribute('textContent', searchForKey(data, 'name'));
+    }
   }
 }
 

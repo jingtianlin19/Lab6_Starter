@@ -52,7 +52,7 @@ async function fetchRecipes() {
           console.log(reason);
           reject(false)
         });
-      if (reciples.length == recipeData.length) {
+      if (recipes.length == recipeData.length) {
         resolve(true);
       }
     }
