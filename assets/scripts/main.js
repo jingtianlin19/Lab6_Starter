@@ -49,7 +49,6 @@ async function fetchRecipes() {
           recipeData[recipe] = data;
           if (Object.keys(recipeData).length == recipes.length) {
             resolve(true);
-            console.log('success')
           }
         })
         .catch(reason => reject(reason));
@@ -82,7 +81,24 @@ function bindShowMore() {
 
   // Part 2 Explore - TODO
   const showMore = document.querySelector('button');
+  var expand = true;
   showMore.addEventListener('click', (e) => {
-    
+    if (expand) {
+      for (let i = 3; i < 6; i++) {
+        const recipeCard = document.createElement('recipe-card');
+        recipeData.data = recipeData[recipes[i]];
+        document.querySelector('main').appendChild(recipeCard);
+      }
+      showMore.innerText = 'show less';
+      expand = false
+    }
+    else {
+      const allRecipes = document.querySelectorAll('recipe-card');
+      for (let i = 3; i < 6; i++) {
+        allRecipes[i].remove();
+      }
+    }
+    showMore.innerText = 'show more';
+    expand = true;
   })
 }
