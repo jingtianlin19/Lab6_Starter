@@ -89,12 +89,12 @@ function bindShowMore() {
   // Part 2 Explore - TODO
   const showMore = document.querySelector('button');
   showMore.addEventListener('click', function (e) {
-    if (document.querySelector('button').innerText === 'Show more') {
+    if (document.querySelector('button').innerHTML == 'Show more') {
       for (let i = 3; i < 6; i++) {
         const recipeCard = document.querySelector('main').appendChild(document.createElement('recipe-card'));
         recipeCard.data = recipeData[recipes[i]];
       }
-      document.querySelector('button').innerText = 'Show less';
+      document.querySelector('button').innerHTML = 'Show less';
     }
     else {
       let allRecipes = document.querySelectorAll('recipe-card');
@@ -102,6 +102,6 @@ function bindShowMore() {
         allRecipes[i].remove();
       }
     }
-    document.querySelector('button').innerText = 'Show less';;
+    document.querySelector('button').innerHTML = 'Show less';;
   })
 }
