@@ -122,6 +122,18 @@ class RecipeCard extends HTMLElement {
     if (searchForKey(data, 'headline') == undefined) {
       element.setAttribute('textContent', searchForKey(data, 'name'));
     }
+    const organization = card.appendChild(document.createElement('p'));
+    organization.setAttribute('class', 'organization');
+    organization.setAttribute('textContent', organization);
+    const rating = card.appendChild(document.createElement('div'));
+    rating.setAttribute('className', 'rating');
+    const time = card.appendChild(document.createElement('time'));
+    time.setAttribute('textContent', convertTime(searchForKey(data, 'totalTime')));
+    const ingredients = card.appendChild(document.createElement('p'));
+    ingredients.setAttribute('className', 'ingredients');
+    ingredients.setAttribute('textContent', createIngredientList(searchForKey(data, 'recipeIngredient')))
+    this.shadow.appendChild(card);
+    this.shadow.appendChild(styleElem);
   }
 }
 
