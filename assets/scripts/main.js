@@ -55,7 +55,7 @@ async function fetchRecipes() {
           }
         })
         .catch(reason => reject(reason));
-    }) 
+    })
   });
 }
 
@@ -71,9 +71,9 @@ function createRecipeCards() {
   recipes.forEach(recipe => {
     if (i < 3) {
       let recipeCard = document.createElement('recipe-card');
-    recipeCard.data = recipeData[recipe];
-    document.querySelector('main').appendChild(recipeCard);
-    i++;
+      recipeCard.data = recipeData[recipe];
+      document.querySelector('main').appendChild(recipeCard);
+      i++;
     }
   })
 }
@@ -88,21 +88,20 @@ function bindShowMore() {
 
   // Part 2 Explore - TODO
   const showMore = document.querySelector('button');
-  var expand = true;
-  showMore.addEventListener('click', function() {
-    if (showMore.innerText === 'Show more') {
+  showMore.addEventListener('click', function (e) {
+    if (document.querySelector('button').innerText === 'Show more') {
       for (let i = 3; i < 6; i++) {
         const recipeCard = document.querySelector('main').appendChild(document.createElement('recipe-card'));
-        recipeCard.data = recipeData[recipes[i]];  
+        recipeCard.data = recipeData[recipes[i]];
       }
-      showMore.innerText = 'Show less';
+      document.querySelector('button').innerText = 'Show less';
     }
     else {
-      const allRecipes = document.querySelectorAll('recipe-card');
+      let allRecipes = document.querySelectorAll('recipe-card');
       for (let i = 3; i < 6; i++) {
         allRecipes[i].remove();
       }
     }
-    showMore.innerText = 'Show more';
+    document.querySelector('button').innerText = 'Show less';;
   })
 }
