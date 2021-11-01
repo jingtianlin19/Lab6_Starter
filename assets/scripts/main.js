@@ -46,16 +46,16 @@ async function fetchRecipes() {
       fetch(recipes[i])
         .then(response => response.json())
         .then(data => {
-          recipeData[i] = data
+          recipeData[i] = data;
+          if (recipes.length == recipeData.length) {
+            console.log('success');
+            resolve(true);
+          }
         })
         .catch(reason => {
           console.log(reason);
           reject(false)
         });
-      if (recipes.length == recipeData.length) {
-        console.log('success');
-        resolve(true);
-      }
     }
   });
 }
