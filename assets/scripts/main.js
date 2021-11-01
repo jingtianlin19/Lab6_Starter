@@ -101,7 +101,8 @@ function bindShowMore() {
       for (let i = 3; i < 6; i++) {
         allRecipes[i].remove();
       }
+      showMore.innerHTML = 'Show more';;
     }
-    showMore.innerHTML = 'Show more';;
+    
   })
 }
