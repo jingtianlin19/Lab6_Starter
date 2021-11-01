@@ -81,4 +81,8 @@ function bindShowMore() {
   // in the recipeData object where you stored them/
 
   // Part 2 Explore - TODO
+  const showMore = document.querySelector('button');
+  showMore.addEventListener('click', (e) => {
+    
+  })
 }

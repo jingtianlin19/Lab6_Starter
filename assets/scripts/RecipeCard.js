@@ -4,7 +4,7 @@ class RecipeCard extends HTMLElement {
 
     // You'll want to attach the shadow DOM here
     super();
-    this.attachShadow({model: 'open'});
+    this.shadow = this.attachShadow({model: 'open'});
   }
 
   set data(data) {
@@ -139,9 +139,9 @@ class RecipeCard extends HTMLElement {
     const ingredients = card.appendChild(document.createElement('p'));
     ingredients.className = 'ingredients';
     ingredients.textContent = createIngredientList(searchForKey(data, 'recipeIngredient'));
+    this.shadow.appendChild(styleElem);
+    this.shadow.appendChild(card);
     
-    this.shadowRoot.appendChild(card);
-    this.shadowRoot.appendChild(styleElem);
   }
 }
 
