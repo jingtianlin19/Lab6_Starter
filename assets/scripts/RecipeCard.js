@@ -112,7 +112,7 @@ class RecipeCard extends HTMLElement {
     title.className = 'title';
 
     const element = title.appendChild(document.createElement('a'));
-    element.href = url;
+    element.href = getUrl(data);
     element.textContent = searchForKey(data, 'headline');
 
     const organization = card.appendChild(document.createElement('p'));
